@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spotifycode/HomePage.dart';
+import 'package:spotifycode/Pages/report.dart';
 import 'package:spotifycode/main.dart';
 
 class settingPage extends StatefulWidget {
@@ -283,7 +284,9 @@ class _fullSizeBackgroundState extends State<fullSizeBackground> {
                           value: odemeiptal,
                           onChanged: (value) {
                             setState(() {
-                              odemeiptal = value;
+                             
+                              _showMyDialog(context);
+                              odemeiptal = false;
                             });
                           },
                           activeTrackColor: Color.fromARGB(255, 3, 255, 3),
@@ -324,4 +327,42 @@ class _fullSizeBackgroundState extends State<fullSizeBackground> {
       ),
     );
   }
+}
+
+Future<void> _showMyDialog(context) async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        backgroundColor: Colors.blue,
+        title: const Text(
+          'İSTENİLEN SAYFAYA ULAŞILAMIYOR',
+          style: TextStyle(color: Colors.white),
+        ),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: const <Widget>[
+              Text(
+                'Yanlış bir durum olduğunu düşünüyorsanız bize bildirin.',
+                style: TextStyle(color: Colors.white),
+              ),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          TextButton(
+            child: const Text(
+              'Bildir',
+              style: TextStyle(color: Colors.white),
+            ),
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => reportPage()));
+            },
+          ),
+        ],
+      );
+    },
+  );
 }

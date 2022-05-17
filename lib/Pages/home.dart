@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spotifycode/Pages/catagorylist.dart';
 import 'package:spotifycode/Pages/musicInfo.dart';
 import 'package:spotifycode/Pages/oneMusicArea.dart';
+import 'package:spotifycode/Pages/youtubePlayer.dart';
 
 class homePageBuild extends StatefulWidget {
   homePageBuild({Key? key}) : super(key: key);
@@ -110,40 +111,67 @@ class _homePagesState extends State<homePages> {
                   ),
                 ),
               ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: musicdatas.length,
-                  padding: EdgeInsets.only(top: 5),
-                  shrinkWrap: true,
-                  itemBuilder: (ctx, int) {
-                    return Padding(
-                      padding: const EdgeInsets.only(top: 2, bottom: 2),
-                      child: MaterialButton(
-                        onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => oneMusic(int)));
-                        },
-                        child: Card(
-                          child: ListTile(
-                              leading: Image(
-                                image: AssetImage(musicdatas[int].path),
-                                width: 60,
-                                height: 60,
-                                fit: BoxFit.fill,
-                              ),
-                              title: Text(
-                                musicdatas[int].sarkiciIsmi,
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              subtitle: Text(
-                                musicdatas[int].muzikAdi,
-                                style: TextStyle(color: Colors.white),
-                              )),
-                          color: Color.fromARGB(255, 1, 0, 26).withOpacity(0.3),
-                        ),
-                      ),
-                    );
-                  },
+              //BURAYA GELECEK
+
+              Padding(
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                child: Container(
+                  width: screenSize.width,
+                  height: screenSize.height * .4,
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: musicdatas.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          child: Card(
+                            color: Color.fromARGB(0, 0, 0, 0).withOpacity(0.2),
+                            key: UniqueKey(),
+                            child: Padding(
+                                padding: const EdgeInsets.only(bottom: 1),
+                                child: MaterialButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) => YoutubePlayer(
+                                                musicdatas[index].url)));
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Image(
+                                        image: AssetImage(
+                                            "assets/elements/categoryimage$index.jpg"),
+                                        fit: BoxFit.fill,
+                                        width: 70,
+                                        height: 70,
+                                      ),
+                                      SizedBox(width: 20),
+                                      MaterialButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (_) => YoutubePlayer(
+                                                      musicdatas[index].url)));
+                                        },
+                                        child: Text(
+                                            musicdatas[index].muzikAdi +
+                                                "\n \n" +
+                                                musicdatas[index].sarkiciIsmi,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white)),
+                                      ),
+                                    ],
+                                  ),
+                                )),
+                          ),
+                        );
+                      }),
                 ),
               ),
             ],
