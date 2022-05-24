@@ -1,17 +1,21 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
 class musicData {
   String path = "";
   String muzikAdi = "";
   String sarkiciIsmi = "";
+  String url = "";
   musicData(
     String path,
     String muzikAdi,
     String alsarkiciIsmiBaslik,
+    String url,
   ) {
     this.path = path;
     this.muzikAdi = muzikAdi;
     this.sarkiciIsmi = alsarkiciIsmiBaslik;
+    this.url = url;
   }
 }
 
@@ -27,22 +31,27 @@ class musicCategory {
 //Gelen Müzik verileri burada tutulacak ek bir alan kullanımına gerek duyulmayacak.
 
 List<musicData> musicdatas = [
-  musicData("assets/sarkici/FeridunDuzagac.jpg", "FERİDUN DÜZAĞAÇ",
-      "Alev Alev Yanıyorum"),
-  musicData("assets/sarkici/MelikSahin.jpg", "MELİKE ŞAHİN", "Nasır"),
-  musicData("assets/sarkici/MahzuniSerif.jpg", "MAHZUNU ŞERİF", "Sarhoş"),
-  musicData("assets/sarkici/LeylaTheBand.jpg", "LEYLA THE BAND", "Yokluğunda"),
-  musicData("assets/sarkici/Kadr.jpg", "KADR", "Hakim Bey"),
-  musicData("assets/sarkici/Yalın.jpg", "YALIN", "Her şey Sensin"),
-  musicData("assets/sarkici/LeylaTheBand.jpg", "LEYLA THE BAND", "Yokluğunda"),
-  musicData("assets/sarkici/FeridunDuzagac.jpg", "FERİDUN DÜZAĞAÇ",
-      "Alev Alev Yanıyorum"),
-  musicData("assets/sarkici/MelikSahin.jpg", "MELİKE ŞAHİN", "Nasır"),
-  musicData("assets/sarkici/MahzuniSerif.jpg", "MAHZUNU ŞERİF", "Sarhoş"),
-  musicData("assets/sarkici/LeylaTheBand.jpg", "LEYLA THE BAND", "Yokluğunda"),
-  musicData("assets/sarkici/Kadr.jpg", "KADR", "Hakim Bey"),
-  musicData("assets/sarkici/Yalın.jpg", "YALIN", "Her şey Sensin"),
-  musicData("assets/sarkici/LeylaTheBand.jpg", "LEYLA THE BAND", "Yokluğunda"),
+  musicData(
+      "assets/sarkici/FeridunDuzagac.jpg",
+      "FERİDUN DÜZAĞAÇ",
+      "Alev Alev Yanıyorum",
+      "https://www.youtube.com/watch?v=p5QepsqnLwo&ab_channel=FeridunD%C3%BCza%C4%9Fa%C3%A7-Topic"),
+  musicData("assets/sarkici/Kadr.jpg", "KADR", "Hakim Bey",
+      "https://www.youtube.com/watch?v=dYLeqJdv6PM&ab_channel=KADRTV"),
+  musicData(
+      "assets/sarkici/FeridunDuzagac.jpg",
+      "FERİDUN DÜZAĞAÇ",
+      "Alev Alev Yanıyorum",
+      "https://www.youtube.com/watch?v=p5QepsqnLwo&ab_channel=FeridunD%C3%BCza%C4%9Fa%C3%A7-Topic"),
+  musicData("assets/sarkici/Kadr.jpg", "KADR", "Hakim Bey",
+      "https://www.youtube.com/watch?v=dYLeqJdv6PM&ab_channel=KADRTV"),
+  musicData(
+      "assets/sarkici/FeridunDuzagac.jpg",
+      "FERİDUN DÜZAĞAÇ",
+      "Alev Alev Yanıyorum",
+      "https://www.youtube.com/watch?v=p5QepsqnLwo&ab_channel=FeridunD%C3%BCza%C4%9Fa%C3%A7-Topic"),
+  musicData("assets/sarkici/Kadr.jpg", "KADR", "Hakim Bey",
+      "https://www.youtube.com/watch?v=dYLeqJdv6PM&ab_channel=KADRTV"),
 ];
 
 //aktif değil

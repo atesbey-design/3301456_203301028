@@ -22,8 +22,3 @@ class YeniKullanici {
     this.parola = parola;
   }
 }
-
-String ePostas = "ates";
-String passwd = "123";
-
-List<Kullanici> kayitliKullanici = [Kullanici(ePostas, passwd)];

@@ -17,9 +17,11 @@ class _oneMusicState extends State<oneMusic> {
   int data = 0;
   _oneMusicState(int data) {
     this.data = data;
+
   }
   @override
   Widget build(BuildContext context) {
+    
     final screenSize = MediaQuery.of(context).size;
     return Container(
       width: screenSize.width,
