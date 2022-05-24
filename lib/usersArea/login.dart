@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:spotifycode/HomePage.dart';
+
 import 'package:spotifycode/Pages/home.dart';
 import 'package:spotifycode/createAccount.dart';
 import 'package:spotifycode/main.dart';
+import 'package:spotifycode/services/auth_service.dart';
 
 import 'package:spotifycode/usersArea/kullaniciBilgileri.dart';
 
@@ -14,6 +16,8 @@ class GirisAlani extends StatefulWidget {
 class GirisSayfasi extends State<GirisAlani> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  AuthService _authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -171,8 +175,15 @@ class GirisSayfasi extends State<GirisAlani> {
                     padding: const EdgeInsets.only(top: 20),
                     child: MaterialButton(
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => HomePage()));
+                        _authService
+                            .signIn(
+                                _emailController.text, _passwordController.text)
+                            .then((value) {
+                          return Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => homePages()));
+                        });
                       },
                       child: Container(
                         width: screenSize.width * .4,

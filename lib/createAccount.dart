@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:spotifycode/HomePage.dart';
+import 'package:spotifycode/Pages/home.dart';
 import 'package:spotifycode/main.dart';
+import 'package:spotifycode/services/auth_service.dart';
 import 'package:spotifycode/usersArea/login.dart';
 
 class createAccount extends StatefulWidget {
@@ -8,8 +11,14 @@ class createAccount extends StatefulWidget {
 }
 
 class _createAccount extends State<createAccount> {
+  AuthService _authService = AuthService();
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _nameController = TextEditingController();
+    final TextEditingController _emailController = TextEditingController();
+    final TextEditingController _passwordController = TextEditingController();
+    final TextEditingController _passwordAgainController =
+        TextEditingController();
     final screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -38,10 +47,16 @@ class arkaPlan extends StatefulWidget {
 }
 
 class _arkaPlanState extends State<arkaPlan> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _passwordAgainController =
+      TextEditingController();
+  AuthService _authService = AuthService();
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    var _emailController;
+
     return Container(
       width: screenSize.width,
       height: screenSize.height,
@@ -89,7 +104,7 @@ class _arkaPlanState extends State<arkaPlan> {
                   ),
                   child: new TextField(
                     cursorColor: Colors.white,
-                    controller: _emailController,
+                    controller: _nameController,
                     style: TextStyle(color: Colors.white),
                     textAlign: TextAlign.center,
                     decoration: new InputDecoration(
@@ -176,44 +191,46 @@ class _arkaPlanState extends State<arkaPlan> {
                     color: Color.fromARGB(255, 38, 35, 35),
                   ),
                   child: new TextField(
-                    obscureText: true,
-                    enableSuggestions: false,
-                    autocorrect: false,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                     cursorColor: Colors.white,
-                    controller: _emailController,
-                    style: TextStyle(color: Colors.white),
-                    textAlign: TextAlign.center,
-                    decoration: new InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                          color: Colors.transparent,
-                        )),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                          color: Colors.transparent,
-                        )),
-                        border: new OutlineInputBorder(
-                            borderSide: new BorderSide(
-                                color: Color.fromARGB(255, 6, 253, 228))),
-                        hintText: 'Şifrenizi giriniz',
-                        labelText: 'Şifre',
-                        labelStyle: TextStyle(color: Colors.white),
-                        hintStyle: TextStyle(
-                            color: Color.fromARGB(153, 255, 255, 255)),
-                        prefixIcon: const Icon(
-                          Icons.email,
-                          color: Color.fromARGB(255, 7, 152, 237),
-                        ),
-                        suffixStyle: const TextStyle(color: Colors.green)),
+                    controller: _passwordController,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.vpn_key,
+                        color: Colors.white,
+                      ),
+                      hintText: 'Parola',
+                      prefixText: ' ',
+                      hintStyle: TextStyle(color: Colors.white),
+                      focusColor: Colors.white,
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Colors.white,
+                      )),
+                      enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                        color: Colors.white,
+                      )),
+                    ),
                   ),
                 ),
               ),
+
+              //KAYIT OLMA KISMI BAŞARILI FAKAT KAYIT OLDUKTAN SONRA YÖNLENDİRME HATASI ALIYORUM
               Padding(
                 padding: const EdgeInsets.only(top: 50),
                 child: MaterialButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => GirisAlani()));
+                    _authService
+                        .createPerson(_nameController.text,
+                            _emailController.text, _passwordController.text)
+                        .then((value) {
+                      return Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    });
                   },
                   child: Container(
                     width: screenSize.width * .4,

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
 class musicData {
@@ -30,11 +31,6 @@ class musicCategory {
 //Gelen Müzik verileri burada tutulacak ek bir alan kullanımına gerek duyulmayacak.
 
 List<musicData> musicdatas = [
-  musicData("assets/sarkici/FeridunDuzagac.jpg", "FERİDUN DÜZAĞAÇ",
-      "Alev Alev Yanıyorum",
-      "https://www.youtube.com/watch?v=p5QepsqnLwo&ab_channel=FeridunD%C3%BCza%C4%9Fa%C3%A7-Topic"),
-  musicData("assets/sarkici/Kadr.jpg", "KADR", "Hakim Bey",
-      "https://www.youtube.com/watch?v=dYLeqJdv6PM&ab_channel=KADRTV"),
   musicData(
       "assets/sarkici/FeridunDuzagac.jpg",
       "FERİDUN DÜZAĞAÇ",
@@ -49,8 +45,13 @@ List<musicData> musicdatas = [
       "https://www.youtube.com/watch?v=p5QepsqnLwo&ab_channel=FeridunD%C3%BCza%C4%9Fa%C3%A7-Topic"),
   musicData("assets/sarkici/Kadr.jpg", "KADR", "Hakim Bey",
       "https://www.youtube.com/watch?v=dYLeqJdv6PM&ab_channel=KADRTV"),
-      
-      
+  musicData(
+      "assets/sarkici/FeridunDuzagac.jpg",
+      "FERİDUN DÜZAĞAÇ",
+      "Alev Alev Yanıyorum",
+      "https://www.youtube.com/watch?v=p5QepsqnLwo&ab_channel=FeridunD%C3%BCza%C4%9Fa%C3%A7-Topic"),
+  musicData("assets/sarkici/Kadr.jpg", "KADR", "Hakim Bey",
+      "https://www.youtube.com/watch?v=dYLeqJdv6PM&ab_channel=KADRTV"),
 ];
 
 //aktif değil

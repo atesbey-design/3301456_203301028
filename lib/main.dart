@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:spotifycode/Pages/catagorylist.dart';
 import 'package:spotifycode/Pages/home.dart';
@@ -13,11 +14,12 @@ import 'package:flutter/material.dart';
 /*
 Firebase Bağlantısıı
 
- WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+
 */
-void main() {
+Future<void> main() async {
   runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
 }
 
 class MyApp extends StatelessWidget {

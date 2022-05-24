@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "615967683960",
+    "project_id": "finalflutterproject-25d5e",
+    "storage_bucket": "finalflutterproject-25d5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:615967683960:android:ea09297218bbb413d6848d",
+        "android_client_info": {
+          "package_name": "com.example.mpotifyproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "615967683960-q4qecpeqt4scj2dm81v3o6s8fpptcmco.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyn4-UNwpaGQLfrXb1_JqQOCRvZ307nvA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "615967683960-q4qecpeqt4scj2dm81v3o6s8fpptcmco.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
