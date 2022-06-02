@@ -1,0 +1,22 @@
+import 'package:spotifycode/model/apiServices/post.dart';
+import 'package:http/http.dart' as http;
+
+class postServices {
+  Future<List<Post>?> getPosts() async {
+    var client = http.Client();
+
+    //bu kısıma kendi url yapını entegere etmen gerekiyor
+    var uri = Uri.parse("http://192.168.1.1:3000/musics");
+    var responsive = await client.get(
+      uri,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    );
+
+    if (responsive.statusCode == 200) {
+      var json = responsive.body;
+      return postFromJson(json);
+    }
+  }
+}

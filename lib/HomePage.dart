@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:spotifycode/Pages/firestoreUsers.dart';
 import 'package:spotifycode/Pages/home.dart';
-import 'package:spotifycode/Pages/library.dart';
+
 import 'package:spotifycode/Pages/oneMusicArea.dart';
 import 'package:spotifycode/Pages/search.dart';
 import 'package:spotifycode/Pages/setting.dart';
@@ -48,7 +49,7 @@ class _HomePageState extends State<HomePage> {
     if (selectedIndex == 0) {
       child = homePageBuild();
     } else if (selectedIndex == 1) {
-      child = oneMusic(Data);
+      child = usersData();
     } else if (selectedIndex == 2) {
       child = searchPageBuild();
     } else if (selectedIndex == 3) {

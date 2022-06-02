@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spotifycode/HomePage.dart';
 import 'package:spotifycode/Pages/report.dart';
+import 'package:spotifycode/gloabalVairable.dart';
 import 'package:spotifycode/main.dart';
 
 class settingPage extends StatefulWidget {
@@ -79,7 +80,7 @@ class _fullSizeBackgroundState extends State<fullSizeBackground> {
                     child: Padding(
                       padding: const EdgeInsets.only(top: 30, left: 40),
                       child: Text(
-                        "ATEŞ POTİFY AYARLARI",
+                        "${UserName} POTİFY AYARLARI",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -284,7 +285,6 @@ class _fullSizeBackgroundState extends State<fullSizeBackground> {
                           value: odemeiptal,
                           onChanged: (value) {
                             setState(() {
-                             
                               _showMyDialog(context);
                               odemeiptal = false;
                             });

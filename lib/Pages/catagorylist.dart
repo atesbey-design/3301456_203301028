@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:spotifycode/Pages/home.dart';
-import 'package:spotifycode/Pages/library.dart';
+
 import 'package:spotifycode/Pages/musicInfo.dart';
 import 'package:spotifycode/Pages/oneMusicArea.dart';
 import 'package:spotifycode/Pages/setting.dart';
@@ -125,7 +125,6 @@ class _oneCatagoryAreaState extends State<oneCatagoryArea> {
                           },
                           child: Row(
                             children: [
-                                  
                               Image(
                                 image: AssetImage(
                                     "assets/elements/categoryimage$index.jpg"),
@@ -134,7 +133,6 @@ class _oneCatagoryAreaState extends State<oneCatagoryArea> {
                                 height: 70,
                               ),
                               SizedBox(width: 20),
-                                
                               MaterialButton(
                                 onPressed: () {
                                   Navigator.push(
@@ -144,12 +142,12 @@ class _oneCatagoryAreaState extends State<oneCatagoryArea> {
                                               musicdatas[index].url)));
                                 },
                                 child: Text(
-                                        musicdatas[index].muzikAdi +
-                                            "\n \n" +
-                                            musicdatas[index].sarkiciIsmi,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white)),
+                                    musicdatas[index].muzikAdi +
+                                        "\n \n" +
+                                        musicdatas[index].sarkiciIsmi,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white)),
                               ),
                             ],
                           ),
@@ -162,4 +160,3 @@ class _oneCatagoryAreaState extends State<oneCatagoryArea> {
     ];
   }
 }
-

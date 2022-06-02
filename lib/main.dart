@@ -3,13 +3,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:spotifycode/Pages/catagorylist.dart';
 import 'package:spotifycode/Pages/home.dart';
+import 'package:spotifycode/Pages/search.dart';
+
 import 'package:spotifycode/createAccount.dart';
 
-import 'package:spotifycode/usersArea/kullaniciBilgileri.dart';
 import 'package:spotifycode/usersArea/login.dart';
 import 'HomePage.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
+
+import 'model/apiServices/postmodel.dart';
 
 /*
 Firebase Bağlantısıı
@@ -17,9 +20,9 @@ Firebase Bağlantısıı
 
 */
 Future<void> main() async {
-  runApp(MyApp());
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -29,7 +32,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: MyHomePage(),
+      home: postModel(),
       debugShowCheckedModeBanner: false,
     );
   }

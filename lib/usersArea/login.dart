@@ -1,12 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spotifycode/HomePage.dart';
 
 import 'package:spotifycode/Pages/home.dart';
 import 'package:spotifycode/createAccount.dart';
+import 'package:spotifycode/gloabalVairable.dart';
 import 'package:spotifycode/main.dart';
 import 'package:spotifycode/services/auth_service.dart';
-
-import 'package:spotifycode/usersArea/kullaniciBilgileri.dart';
 
 class GirisAlani extends StatefulWidget {
   @override
@@ -16,12 +17,36 @@ class GirisAlani extends StatefulWidget {
 class GirisSayfasi extends State<GirisAlani> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _userName = TextEditingController();
 
   AuthService _authService = AuthService();
+
+  //LocalStorage başlangıç kısmı
+  setUserName() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString("userName", UserName);
+  }
+
+  getUserName() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      UserName = pref.getString("userName");
+      if (UserName == null) {
+        UserName = "";
+      }
+    });
+  }
+
+  void initState() {
+    super.initState();
+    getUserName();
+  }
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
+    //sHARED Preferences ile local storage oluşturma
+
     return Scaffold(
         backgroundColor: Colors.blue,
         appBar: AppBar(
@@ -64,6 +89,50 @@ class GirisSayfasi extends State<GirisAlani> {
 
                           //Bu kısıma spotify logosu gelecek
                           child: Image(image: AssetImage("assets/LOGO.png"))),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 15.0, right: 15.0, top: 20, bottom: 0),
+                    //padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Container(
+                      width: screenSize.width,
+                      height: screenSize.height * .088,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(22),
+                        border: Border.all(
+                          color: Color.fromARGB(255, 1, 0, 26),
+                        ),
+                        color: Color.fromARGB(255, 38, 35, 35),
+                      ),
+                      child: new TextField(
+                        cursorColor: Colors.white,
+                        controller: _userName,
+                        style: TextStyle(color: Colors.white),
+                        textAlign: TextAlign.center,
+                        decoration: new InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.transparent,
+                            )),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.transparent,
+                            )),
+                            border: new OutlineInputBorder(
+                                borderSide: new BorderSide(
+                                    color: Color.fromARGB(255, 6, 253, 228))),
+                            hintText: 'Kullanıcı Adını Gir',
+                            labelText: 'Kullanıcı Adı',
+                            labelStyle: TextStyle(color: Colors.white),
+                            hintStyle: TextStyle(
+                                color: Color.fromARGB(153, 255, 255, 255)),
+                            prefixIcon: const Icon(
+                              Icons.man,
+                              color: Color.fromARGB(255, 7, 152, 237),
+                            ),
+                            suffixStyle: const TextStyle(color: Colors.green)),
+                      ),
                     ),
                   ),
                   Padding(
@@ -175,6 +244,11 @@ class GirisSayfasi extends State<GirisAlani> {
                     padding: const EdgeInsets.only(top: 20),
                     child: MaterialButton(
                       onPressed: () {
+                        setState(() {
+                          UserName = _userName.text;
+                        });
+                        setUserName();
+
                         _authService
                             .signIn(
                                 _emailController.text, _passwordController.text)
@@ -182,7 +256,7 @@ class GirisSayfasi extends State<GirisAlani> {
                           return Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => homePages()));
+                                  builder: (context) => HomePage()));
                         });
                       },
                       child: Container(
@@ -214,7 +288,7 @@ class GirisSayfasi extends State<GirisAlani> {
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
