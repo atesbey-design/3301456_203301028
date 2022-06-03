@@ -3,6 +3,7 @@ import 'package:spotifycode/HomePage.dart';
 import 'package:spotifycode/Pages/report.dart';
 import 'package:spotifycode/gloabalVairable.dart';
 import 'package:spotifycode/main.dart';
+import 'package:spotifycode/usersArea/login.dart';
 
 class settingPage extends StatefulWidget {
   const settingPage({Key? key}) : super(key: key);
@@ -302,7 +303,10 @@ class _fullSizeBackgroundState extends State<fullSizeBackground> {
                 child: MaterialButton(
                   disabledColor: Colors.black,
                   hoverColor: Colors.black,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => GirisAlani()));
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),

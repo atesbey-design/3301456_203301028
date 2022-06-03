@@ -6,7 +6,7 @@ class postServices {
     var client = http.Client();
 
     //bu kısıma kendi url yapını entegere etmen gerekiyor
-    var uri = Uri.parse("http://192.168.1.1:3000/musics");
+    var uri = Uri.parse("https://jsonplaceholder.typicode.com/comments");
     var responsive = await client.get(
       uri,
       headers: {

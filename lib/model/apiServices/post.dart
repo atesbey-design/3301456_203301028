@@ -12,26 +12,26 @@ String postToJson(List<Post> data) =>
 
 class Post {
   Post({
-    required this.userId,
+    required this.name,
     required this.id,
     required this.title,
     this.body,
   });
 
-  int userId;
+  String name;
   int id;
   String title;
   String? body;
 
   factory Post.fromJson(Map<String, dynamic> json) => Post(
-        userId: json["userId"],
+        name: json["name"],
         id: json["id"],
         title: json["title"],
         body: json["body"],
       );
 
   Map<String, dynamic> toJson() => {
-        "userId": userId,
+        "name": name,
         "id": id,
         "title": title,
         "body": body,

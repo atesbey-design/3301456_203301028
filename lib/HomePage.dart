@@ -7,6 +7,7 @@ import 'package:spotifycode/Pages/oneMusicArea.dart';
 import 'package:spotifycode/Pages/search.dart';
 import 'package:spotifycode/Pages/setting.dart';
 import 'package:spotifycode/main.dart';
+import 'package:spotifycode/model/apiServices/postmodel.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -51,7 +52,7 @@ class _HomePageState extends State<HomePage> {
     } else if (selectedIndex == 1) {
       child = usersData();
     } else if (selectedIndex == 2) {
-      child = searchPageBuild();
+      child = postModel();
     } else if (selectedIndex == 3) {
       child = settingPage();
     }
