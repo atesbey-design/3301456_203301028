@@ -1,0 +1,3 @@
+class mainImgUrl {
+  String url = "";
+}

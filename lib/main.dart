@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:spotifycode/Pages/catagorylist.dart';
 import 'package:spotifycode/Pages/home.dart';
 import 'package:spotifycode/Pages/search.dart';
@@ -8,6 +9,7 @@ import 'package:spotifycode/Pages/search.dart';
 import 'package:spotifycode/createAccount.dart';
 
 import 'package:spotifycode/usersArea/login.dart';
+import 'package:spotifycode/usersArea/providerMainImgUrl.dart';
 import 'HomePage.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -22,7 +24,11 @@ Firebase Bağlantısıı
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(Provider<mainImgUrl>(
+      create: (BuildContext context) {
+        return mainImgUrl();
+      },
+      child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -55,9 +61,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    String url = Provider.of<mainImgUrl>(context).url;
     return Container(
         color: Color.fromARGB(255, 1, 0, 26),
-        child: Image(image: AssetImage("assets/logoo.png")));
+        child: Image(image: AssetImage("$url")));
   }
 }
 
