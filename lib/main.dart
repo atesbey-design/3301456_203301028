@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:spotifycode/Pages/catagorylist.dart';
 import 'package:spotifycode/Pages/home.dart';
 import 'package:spotifycode/Pages/search.dart';
+import 'package:spotifycode/Pages/setting.dart';
+import 'package:spotifycode/chartModel.dart';
 
 import 'package:spotifycode/createAccount.dart';
 
@@ -38,7 +40,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: GirisAlani(),
+      home: settingPage(),
       debugShowCheckedModeBanner: false,
     );
   }

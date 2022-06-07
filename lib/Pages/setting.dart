@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spotifycode/HomePage.dart';
 import 'package:spotifycode/Pages/report.dart';
+import 'package:spotifycode/chartModel.dart';
 import 'package:spotifycode/gloabalVairable.dart';
 import 'package:spotifycode/main.dart';
 import 'package:spotifycode/usersArea/login.dart';
@@ -97,42 +98,42 @@ class _fullSizeBackgroundState extends State<fullSizeBackground> {
             Padding(
                 padding: const EdgeInsets.only(
                     top: 40, left: 6, right: 6, bottom: 6),
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Color.fromARGB(255, 0, 0, 0).withOpacity(0.3)),
-                  width: screenSize.width,
-                  height: screenSize.height * .1,
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Text(
-                          "KARANLIK TEMA ",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              fontFamily: "Raleway"),
+                child: MaterialButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => chartData()));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color:
+                            Color.fromARGB(255, 59, 38, 216).withOpacity(0.3)),
+                    alignment: Alignment.center,
+                    height: screenSize.height * .1,
+                    child: Row(
+                      
+                      children: [
+                      
+                       
+                     
+                        Container(
+                          width: screenSize.width - 50,
+                          child: Text(
+                            "İSTATİSTLİKLERİM  ",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                fontFamily: "Raleway"),
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        width: screenSize.width * .32,
-                      ),
-                      Container(
-                        alignment: Alignment.centerRight,
-                        child: Switch(
-                          value: koyuTema,
-                          onChanged: (value) {
-                            setState(() {
-                              koyuTema = value;
-                            });
-                          },
-                          activeTrackColor: Color.fromARGB(255, 3, 255, 3),
-                          activeColor: Color.fromARGB(255, 255, 255, 255),
-                        ),
-                      ),
-                    ],
+                          
+                        
+                       
+                  
+                      ],
+                    ),
                   ),
                 )),
             Padding(
