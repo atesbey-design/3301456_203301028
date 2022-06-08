@@ -1,6 +1,8 @@
 # mpotifyproject
 
-A new Flutter project.
+Project ScreenShot
+
+![alt text](https://github.com/atesbey-design/3301456_203301028/blob/Ctadd/assets/ProjectSS/page1.png?raw=true)
 
 ## Getting Started
 
