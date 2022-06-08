@@ -6,7 +6,7 @@ import 'package:spotifycode/HomePage.dart';
 import 'package:spotifycode/Pages/home.dart';
 import 'package:spotifycode/createAccount.dart';
 import 'package:spotifycode/gloabalVairable.dart';
-import 'package:spotifycode/main.dart';
+
 import 'package:spotifycode/services/auth_service.dart';
 
 class GirisAlani extends StatefulWidget {
