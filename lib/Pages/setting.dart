@@ -98,8 +98,8 @@ class _fullSizeBackgroundState extends State<fullSizeBackground> {
             Padding(
                 padding: const EdgeInsets.only(
                     top: 40, left: 6, right: 6, bottom: 6),
-                child: MaterialButton(
-                  onPressed: () {
+                child: GestureDetector(
+                  onHorizontalDragUpdate: (e) {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => chartData()));
                   },
@@ -301,10 +301,8 @@ class _fullSizeBackgroundState extends State<fullSizeBackground> {
             Center(
               child: Padding(
                 padding: const EdgeInsets.only(top: 50),
-                child: MaterialButton(
-                  disabledColor: Colors.black,
-                  hoverColor: Colors.black,
-                  onPressed: () {
+                child: GestureDetector(
+                  onDoubleTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => GirisAlani()));
                   },

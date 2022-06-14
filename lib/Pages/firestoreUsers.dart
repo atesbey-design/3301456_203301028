@@ -17,7 +17,7 @@ class _usersDataState extends State<usersData> {
     //collection düzeyinde veri
     CollectionReference musicInfo = _firestore.collection('Users');
     //document düzeyinde veri
-    var anaref = musicInfo.doc('1-Feridun duzağac');
+  
     return Container(
       width: screenSize.width,
       height: screenSize.height,
@@ -26,7 +26,8 @@ class _usersDataState extends State<usersData> {
           stream: musicInfo.snapshots(),
           builder: (BuildContext context, AsyncSnapshot asyncSnapshot) {
             //just add this line
-            if (asyncSnapshot.data == null) return CircularProgressIndicator();
+            if (asyncSnapshot.data == null)
+              return Center(child: CircularProgressIndicator());
 
             List<DocumentSnapshot> docSnap = asyncSnapshot.data.docs;
             return ListView.builder(

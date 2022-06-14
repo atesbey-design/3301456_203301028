@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:search_page/search_page.dart';
 import 'package:spotifycode/model/apiServices/post.dart';

@@ -69,8 +69,8 @@ class _homePagesState extends State<homePages> {
                   scrollDirection: Axis.horizontal,
                   itemCount: musiccategory.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return MaterialButton(
-                      onPressed: () {
+                    return GestureDetector(
+                      onLongPress: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (_) => catagoryArea()));
                       },
@@ -132,8 +132,8 @@ class _homePagesState extends State<homePages> {
                             key: UniqueKey(),
                             child: Padding(
                                 padding: const EdgeInsets.only(bottom: 1),
-                                child: MaterialButton(
-                                  onPressed: () {
+                                child: GestureDetector(
+                                  onVerticalDragUpdate: (e) {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
@@ -150,8 +150,8 @@ class _homePagesState extends State<homePages> {
                                         height: 70,
                                       ),
                                       SizedBox(width: 20),
-                                      MaterialButton(
-                                        onPressed: () {
+                                      GestureDetector(
+                                        onPanUpdate: (e) {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
